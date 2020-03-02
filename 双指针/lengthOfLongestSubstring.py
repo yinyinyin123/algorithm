@@ -20,5 +20,6 @@ def lengthOfLongestSubstring(self, s: str) -> int:
         right += 1
     return max_length
 
+
 def test():
 	pass
