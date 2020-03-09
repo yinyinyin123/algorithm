@@ -7,12 +7,14 @@
 def lengthOfLongestSubstring(self, s: str) -> int:
     left, right = 0, 0
     max_length = 0
+    ### 利用字典作为窗口
     window = {}
     for char in list(set(s)):
         window[char] = 0
     while(right < len(s)):
         char = s[right]
         window[char] += 1
+        ### 滑动窗口 开始滑动
         while(window[char] != 1):
             window[s[left]] -= 1
             left += 1

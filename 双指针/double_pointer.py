@@ -10,6 +10,7 @@ def minSubArrayLen(self, s: int, nums: List[int]) -> int:
     Answer = float('inf')
     for i in range(len(nums)):
         Sum += nums[i]
+        ### 当总和大于s时，滑动窗口
         while(Sum >= s):
             Answer = min(answer,i - Left + 1)
             Sum -= nums[left]
@@ -19,8 +20,10 @@ def minSubArrayLen(self, s: int, nums: List[int]) -> int:
 ### 扫一遍加二分
 
 def minSubArrayLen(self, s: int, nums: List[int]) -> int:
+    ### 二分找差值
     def helper(start,end,diff):
         temp = end
+        ### 注意边界
         while(start < end - 1):
             mid = int((end - start)/2)+start
             if(nums[temp] - nums[mid] >= diff):
@@ -33,6 +36,7 @@ def minSubArrayLen(self, s: int, nums: List[int]) -> int:
     nums.insert(0,0)
     start = 0
     min_length = float('inf')
+    ### 扫描数组
     for i in range(1,len(nums)):
         if(nums[i] >= s):
             return 1
