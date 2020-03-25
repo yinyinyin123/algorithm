@@ -56,6 +56,9 @@ class Tree:
 			    outlist.append(root.val)
 		helper(self.head)
 		return outlist
+	### 后需添加
+	def postorder_visit():
+		pass
     
     #层次遍历  队列 注意队列实现
 	def LevelOrder_Visit(self):
