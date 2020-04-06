@@ -4,6 +4,9 @@
 ### leetcode 300 最长子序列
 ### 动态规划基本问题
 
+### 2020/04/06
+### 二刷
+大王
 ### 贪心 + 二分 O(nlogn)
 def lengthOfLIS(self, nums: List[int]) -> int:
     d = []
