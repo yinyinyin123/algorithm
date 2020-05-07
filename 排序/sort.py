@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ### one code one day
 ### 各种排序
@@ -25,3 +26,5 @@ def quicksort(start, end):
 def test():
 	pass
  No newline at end of file
+=======
+>>>>>>> b15cb4e10169600dda3c13ad8b4495da0df50785
