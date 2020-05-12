@@ -3,6 +3,8 @@
 ### 2020/03/19
 ### leetcode 1027 最长等差序列
 
+### 2020/05/12 二刷
+
 ###最长子序列类 DP
 def longestArithSeqLength(self, A: List[int]) -> int:
     dp = [{} for _ in range(len(A))]
