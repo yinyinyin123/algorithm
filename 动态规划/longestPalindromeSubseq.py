@@ -5,9 +5,10 @@
 ### 动态规划
 ### 定义dp[i][j]为字符串i到j位置的最长回文子序列长度
 ### 转移方程 dp[i][j] = dp[i+1][j-1] + 2             s[i] == s[j]
-###                  = max(dp[i][j-1], dp[i+1][j])  s[i] != s[j] 
+###                  = max(dp[i][j-1], dp[i+1][j])  s[i] != s[j]
 ### 时间复杂度O(n2) 空间复杂度O(n2)
 
+### 二刷 2020/05/15
 def longestPalindromeSubseq(self, s: str) -> int:
     if(not s):
         return 0
