@@ -5,6 +5,8 @@
 ### 动态规划 实现的代码不是很简洁
 ### 维护最大的正值和最小的负值
 
+### 二刷 2020/05/18 注意条件判断
+
 def maxProduct(self, nums: List[int]) -> int:
 	### 最大正值，最小负值
     positive = negative = None
