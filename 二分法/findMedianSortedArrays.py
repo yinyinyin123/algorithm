@@ -40,3 +40,45 @@ def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
             return K_of_two_sorted_arr(nums1, nums2, (len(nums1) + len(nums2)) // 2) / 2 + K_of_two_sorted_arr(nums1, nums2, 1 + (len(nums1) + len(nums2)) // 2) / 2
         else:
             return K_of_two_sorted_arr(nums1, nums2, 1 + (len(nums1) + len(nums2)) // 2)
+
+### 二刷 2020/05/24
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        def helper(posi):
+            start, end = 0, len(nums1) - 1
+            while(end >= 0 and start < len(nums1)):
+                mid = (start + end) // 2
+                if(posi < mid + 1):
+                    end = mid - 1
+                elif(posi == mid + 1):
+                    if(len(nums2) == 0 or (nums2 and nums1[posi-1] <= nums2[0])):
+                        return nums1[posi-1]
+                    else:
+                        end = mid - 1
+                elif(posi > mid + 1 and posi - 2 - mid >= len(nums2)):
+                    start = mid + 1
+                else:
+                    nums2Posi =  posi - 2 - mid
+                    if(nums1[mid] == nums2[nums2Posi]):
+                        return nums1[mid]
+                    elif(nums1[mid] > nums2[nums2Posi]):
+                        if(nums2Posi == len(nums2) - 1 or (nums2Posi < len(nums2) - 1 and nums1[mid] <= nums2[nums2Posi+1])):
+                            return nums1[mid]
+                        else:
+                            end = mid - 1
+                    else:
+                        if(mid == len(nums1) - 1 or (mid < len(nums1) - 1 and nums1[mid+1] >= nums2[nums2Posi])):
+                            return nums2[nums2Posi]
+                        else:
+                            start = mid + 1
+            if(end < 0):
+                return nums2[posi-1]
+            if(start >= len(nums1)):
+                return nums2[posi-len(nums1)-1]
+        if(len(nums1) < len(nums2)):
+            nums1, nums2 = nums2, nums1
+        left, right = 1 + (len(nums1) + len(nums2)) // 2, (len(nums1) + len(nums2) + 1) // 2
+        if(len(nums2) == 0):
+            return (nums1[left-1] + nums1[right-1]) / 2
+        return (helper(left) + helper(right)) / 2
