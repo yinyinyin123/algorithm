@@ -24,3 +24,34 @@ def decodeString(self, s: str) -> str:
         else:
             stack.append(char)
     return "".join(stack)
+
+### 2020/05/28
+### 递归法
+def decodeString(self, s: str) -> str:
+    def find(start, end):
+        count = 0
+        for i in range(start, end+1):
+            if(s[i] == '['):
+                count += 1
+            elif(s[i] == ']'):
+                count -= 1
+                if(count == 0):
+                    return i
+
+    def decode(start, end):
+        res = ''
+        i = start
+        while(i <= end):
+            if('0' <= s[i] <= '9'):
+                strNum = ''
+                while('0'<=s[i]<='9'):
+                    strNum += s[i]
+                    i += 1
+                idx = find(i, end)
+                res = res + int(strNum) * decode(i+1, idx-1)
+                i = idx + 1
+            else:
+                res += s[i]
+                i += 1
+        return res
+    return decode(0, len(s)-1)
