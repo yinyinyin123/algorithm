@@ -7,6 +7,8 @@
 ### 思考
 ### 每个位置的雨水能多少？
 
+## 二刷
+
 def trap(self, height: List[int]) -> int:
     if(len(height) <= 2):
         return 0
