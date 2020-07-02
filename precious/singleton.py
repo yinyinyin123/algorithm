@@ -23,3 +23,14 @@ class singleton(object):
         if self.cls not in self.instance:
             self.instance[self.cls] = self.cls()
         return self.instance[self.cls]
+
+### new方法实现单例
+
+class Singleton(object):
+    instance = None
+    def __new__(cls, *args, **kw):
+        if instance is None:
+            cls.instance = object.__new__(cls, *args, **kw)
+        return cls.instance
+    def __init__(self):
+        pass
